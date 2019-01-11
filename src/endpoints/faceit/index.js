@@ -1,5 +1,5 @@
 const axios = require('axios');
-const apiKey = 'c18e7ea5-fe80-4c5a-84e8-8dfc087f7478';
+const apiKey = process.env.FACEIT_API_KEY;
 const client = axios.create({
   baseURL: 'https://open.faceit.com/data/v4',
   headers: {
@@ -13,7 +13,7 @@ const getPlayerElo = async (player) => {
 
   try {
     const { data } = await client.get(`/players?nickname=${player}`);
-    output = `${player} has ${data.games.csgo.faceit_elo} Elo.`;
+    output = `${player} has ${data.games.csgo.faceit_elo} Elo on FACEIT.`;
   } catch (err) {
     output = `Couldn't find player. (Username must be properly capitalized.)`;
   }

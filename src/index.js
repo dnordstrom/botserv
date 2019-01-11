@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 const glob = require('glob');
 const fastify = require('fastify')({ logger: true });
